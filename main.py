@@ -217,7 +217,7 @@ class Evaluator_Llama:
 from datasets import load_from_disk
 model_name = "Llama-2-7b"
 tokenizer = AutoTokenizer.from_pretrained(f"./Model_data/{model_name}")
-dataset = load_from_disk("./dataset/lambada_openai")
+dataset = load_dataset('lambada_openai', split='validation[:1000]')
 print("Loaded dataset from {./dataset/lambada_openai}")
 if "Llama" in model_name:
     evaluator_PPL = Evaluator_Llama(dataset, tokenizer, 'cuda')
